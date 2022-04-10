@@ -28,10 +28,9 @@ function MoviesList (){
         props.data.map(movie=>movieArray.push(<ImgMediaCard  key={movie.id} id={movie.id} />))
 
         //cards invisible à la fin pour l'alignement
-        movieArray.push(<div className="card-wrapper" key={"invisible-1"}><Card className="card" sx={{ maxWidth: 345, maxHeight:345}}/></div>)
-        movieArray.push(<div className="card-wrapper"key={'invisble-2'}><Card className="card" sx={{ maxWidth: 345, maxHeight:345}}/></div>)
-        movieArray.push(<div className="card-wrapper" key={'invisble-3'}><Card className="card" sx={{ maxWidth: 345, maxHeight:345}}/></div>)
-        movieArray.push(<div className="card-wrapper" key={'invisble-4'}><Card className="card" sx={{ maxWidth: 345, maxHeight:345}}/></div>)
+        movieArray.push(<div className="card-wrapper" key={"invisible-1"}><Card className="card" /></div>)
+        movieArray.push(<div className="card-wrapper"key={'invisble-2'}><Card className="card" /></div>)
+   
         dispatch(noRender())
     }
     

@@ -25,7 +25,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 375,
   bgcolor: 'background.paper',
   border: '0px solid #000',
   boxShadow: 24,
@@ -73,14 +73,14 @@ function ImgMediaCard (props) {
     >
       <div ref={nodeRef}className='card-wrapper'>
 
-        <Card id={props.id} className="card" sx={{ maxWidth: 345, maxHeight:355}}>
+        <Card id={props.id} className="card" sx={{ maxWidth: 345, maxHeight:355,minHeight:355}}>
           <CardMedia
             component="img"
             alt="movie picture"
             height="140"
             image="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1456&q=80"
           />
-          <CardContent>
+          <CardContent className="card__first-content">
             <Typography gutterBottom variant="h5" component="div">
               {movie.title}
             </Typography>
@@ -98,6 +98,7 @@ function ImgMediaCard (props) {
               colors={["#CF5C78", "#F5DF4D", "#00A0B0"]}
               hideText={true}
               style={{width:"150px"}}
+              className="card__second-content__gauge"
             />
           </CardContent>
           <CardActions className='card__buttons-container'>

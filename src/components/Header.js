@@ -12,9 +12,9 @@ function Header(){
                 <div className="header__container__author">
                     <p>par Koch Christopher</p>
                     <ButtonGroup variant="text" aria-label="text button group">
-                        <Button color="top" href="https://www.linkedin.com/in/christopher-koch-frontend/">Linkedin</Button>
-                        <Button color="top"href="https://github.com/kochky">GitHub</Button>
-                        <Button color="top" href="https://kochky.github.io/portfolio/">Portfolio</Button>
+                        <Button className="header__container__author__button-container__button" color="top" href="https://www.linkedin.com/in/christopher-koch-frontend/">Linkedin</Button>
+                        <Button className="header__container__author__button-container__button" color="top"href="https://github.com/kochky">GitHub</Button>
+                        <Button className="header__container__author__button-container__button" color="top" href="https://kochky.github.io/portfolio/">Portfolio</Button>
                     </ButtonGroup>
                     
                 </div>

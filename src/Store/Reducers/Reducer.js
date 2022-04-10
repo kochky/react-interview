@@ -54,6 +54,7 @@ function moviesData(state= initialState(),action){
                 likedMovieIndex.dislikes --
             }
             return Object.assign({},state,likedMovieIndex)
+            
         case ADD_DISLIKE:
             let dislikedMovieIndex= state.data.find(movie=>movie.id===action.id)
             if(dislikedMovieIndex.disliked !==true){
