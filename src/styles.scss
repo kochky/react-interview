@@ -1,0 +1,116 @@
+body {
+    margin:auto;
+    font-family: "Roboto", Verdana, Geneva, Tahoma, sans-serif;   
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    transition: all 0ms 0ms !important
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    height:150px;
+    display:flex;
+    &__container {
+        width:80%;
+        margin:auto;
+        display:flex;
+        justify-content: space-between;
+        align-items: "center";
+        &__title {
+            font-size:2em;
+            text-align: center;
+            line-height: 2em;
+            color:#00A0B0
+        }
+        &__author {
+            display:flex;
+            align-items: flex-end;
+            flex-direction: column;
+            & p {
+                font-size: 1.25em;
+                padding-bottom:15px;
+                
+            }
+           
+        }
+    }
+}
+
+.hero {
+    background: url("./ressources/corina-rainer-P2wLo_PzHjU-unsplash.jpg") no-repeat ;
+    background-position: top;
+    background-size:cover;
+    width:100%;
+    height:500px;
+    display:flex;
+    align-items: center;
+    justify-content: end;
+    &__techno {
+        background-color: white;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right:10%;
+        width:200px;
+        height:200px;
+        & p {
+            margin-bottom:20px;
+            font-weight: bold;
+        }
+        & li {
+            margin: 10px ;
+            color:#CF5C78
+        }
+    }
+}
+
+.container {
+    background-color: whitesmoke;
+    margin:auto;
+    padding: 30px 10%;
+    box-shadow: 5px 5px 5px lightgray;
+    &__card-list{
+        margin-top:50px;
+        display:flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 40px;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+.card-wrapper{
+    flex-grow: 1;
+    min-width:345px;
+}
+
+.card {
+    &__second-content{
+        display:flex;
+        justify-content: center;
+        margin:0;
+        padding:0 !important;
+    }
+    &__buttons-container{
+        display:flex;
+        justify-content: space-around;
+    }
+}
+
+.error-container {
+    color:red;
+    font-size: 36px;
+    height:200px;
+    text-align: center;
+    line-height: 100px;
+    margin:100px 0;
+}

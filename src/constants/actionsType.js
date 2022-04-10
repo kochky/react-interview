@@ -1,0 +1,7 @@
+export const LOAD_MOVIES= "LOAD_MOVIES"
+export const LOAD_MOVIES_SUCCES= "LOAD_MOVIES_SUCCES"
+export const LOAD_MOVIES_ERROR = "LOAD_MOVIES_ERROR"
+export const ADD_LIKE = "ADD_LIKE"
+export const REMOVE_LIKE = "REMOVE_LIKE"
+export const ADD_DISLIKE = "ADD_DISLIKE"
+export const REMOVE_DISLIKE = "REMOVE_DISLIKE"
