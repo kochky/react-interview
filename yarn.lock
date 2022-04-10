@@ -8140,7 +8140,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-"react-dom@^16.8.2 || ^17.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
+"react-dom@^16.8.2", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
   "integrity" "sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.0.0.tgz"
   "version" "18.0.0"
@@ -8153,10 +8153,10 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.10.tgz"
   "version" "6.0.10"
 
-"react-gauge-chart@^0.4.0":
-  "integrity" "sha512-VP3e0YTSPznsFTIuG2gWGLeGMB/E+swEWY8TDFDd7+ti4d5oNHjMUyVCgTHAL0CUU2JIaE1GRmd5a6hhb4u/iA=="
-  "resolved" "https://registry.npmjs.org/react-gauge-chart/-/react-gauge-chart-0.4.0.tgz"
-  "version" "0.4.0"
+"react-gauge-chart@^0.3.0":
+  "integrity" "sha512-W6oYFnlKNP5fuvERBwMuwjtQ+mNd+qpRjvjkTKrYeCmtBShCkxP17TOddtF5Sk5MbUJQle1MbER8TyJZaBLatA=="
+  "resolved" "https://registry.npmjs.org/react-gauge-chart/-/react-gauge-chart-0.3.0.tgz"
+  "version" "0.3.0"
   dependencies:
     "d3" "^5.12.0"
 
@@ -8257,7 +8257,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^16.8.2 || ^17.0", "react@^16.8.3 || ^17 || ^18", "react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@>= 16", "react@>=16.6.0", "react@>=16.8.0":
+"react@^16.8.2", "react@^16.8.3 || ^17 || ^18", "react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@>= 16", "react@>=16.6.0", "react@>=16.8.0":
   "integrity" "sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0.tgz"
   "version" "18.0.0"

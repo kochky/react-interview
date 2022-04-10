@@ -7,7 +7,6 @@ body {
     margin:0;
     padding:0;
     box-sizing: border-box;
-    transition: all 0ms 0ms !important
 }
 
 li {
@@ -35,10 +34,8 @@ li {
             flex-direction: column;
             & p {
                 font-size: 1.25em;
-                padding-bottom:15px;
-                
-            }
-           
+                padding-bottom:15px;  
+            }           
         }
     }
 }
@@ -75,7 +72,7 @@ li {
 .container {
     background-color: whitesmoke;
     margin:auto;
-    padding: 30px 10%;
+    padding: 50px 10%;
     box-shadow: 5px 5px 5px lightgray;
     &__card-list{
         margin-top:50px;
@@ -83,34 +80,88 @@ li {
         flex-wrap: wrap;
         column-gap: 20px;
         row-gap: 40px;
-        justify-content: space-around;
+        justify-content: start;
         align-items: center;
+    }
+    &__error-container {
+        color:red;
+        font-size: 36px;
+        height:200px;
+        text-align: center;
+        line-height: 100px;
+        margin:100px 0;
+    }
+    &__no-film {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        column-gap:20px;
+        width:100%;
+
     }
 }
 
 .card-wrapper{
-    flex-grow: 1;
     min-width:345px;
 }
+
 
 .card {
     &__second-content{
         display:flex;
-        justify-content: center;
+        justify-content: right;
         margin:0;
-        padding:0 !important;
+        padding:0 35px !important;
+
     }
     &__buttons-container{
         display:flex;
         justify-content: space-around;
+        height:55px;
     }
 }
 
-.error-container {
-    color:red;
-    font-size: 36px;
-    height:200px;
-    text-align: center;
-    line-height: 100px;
-    margin:100px 0;
+
+
+.alert-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+.alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+    opacity: 1;
+
+}
+.alert-exit-active {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 200ms,transform 2000ms;
+    min-width:0;
+    animation:200ms widthChange 
+}
+  
+.modal {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    &__buttons-container {
+        display:flex;
+        width:100%;
+        justify-content:space-around;
+        margin-top:50px;
+    }
+}
+
+@keyframes widthChange {
+    from {
+        width:345px
+    }
+    to {
+        width:0%
+    }
+
 }

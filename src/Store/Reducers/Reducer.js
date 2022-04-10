@@ -1,4 +1,4 @@
-import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, REMOVE_LIKE, ADD_DISLIKE,REMOVE_DISLIKE} from "../../constants/actionsType"
+import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE, RENDER, DELETE_MOVIE} from "../../constants/actionsType"
 
 
 function initialState () {
@@ -6,7 +6,8 @@ function initialState () {
         loading:false,
         error:false,
         isLoaded:false,
-        data:[]
+        data:[],
+        render:false
     } 
 }
 function moviesData(state= initialState(),action){
@@ -24,7 +25,13 @@ function moviesData(state= initialState(),action){
                 loading:false,
                 error:false,
                 data:action.payload,
-                isLoaded:true
+                isLoaded:true,
+                render:true,
+            }
+        case RENDER:
+            return {
+                ...state,
+                render:false,
             }
         case LOAD_MOVIES_ERROR:
             return {
@@ -35,20 +42,38 @@ function moviesData(state= initialState(),action){
             }
         case ADD_LIKE:
             let likedMovieIndex= state.data.find(movie=>movie.id===action.id)
-            likedMovieIndex.likes ++
-          return Object.assign({},state,likedMovieIndex)
-        
-        case REMOVE_LIKE: 
-            return{
-
+            if(likedMovieIndex.liked !==true){
+                likedMovieIndex.likes ++
+                likedMovieIndex.liked=true
+            }else {
+                likedMovieIndex.likes --
+                likedMovieIndex.liked=false
             }
+            if(likedMovieIndex.disliked){
+                likedMovieIndex.disliked=false
+                likedMovieIndex.dislikes --
+            }
+            return Object.assign({},state,likedMovieIndex)
         case ADD_DISLIKE:
-            return {
-
+            let dislikedMovieIndex= state.data.find(movie=>movie.id===action.id)
+            if(dislikedMovieIndex.disliked !==true){
+                dislikedMovieIndex.dislikes ++
+                dislikedMovieIndex.disliked=true
+            }else {
+                dislikedMovieIndex.dislikes --
+                dislikedMovieIndex.disliked=false
             }
-        case REMOVE_DISLIKE:
+            if(dislikedMovieIndex.liked){
+                dislikedMovieIndex.liked=false
+                dislikedMovieIndex.likes --
+            }
+            return Object.assign({},state,dislikedMovieIndex)
+       
+        case DELETE_MOVIE: 
             return {
-
+                ...state,
+                //render:true,
+                data:state.data.filter((movie)=>movie.id !== action.id)
             }
         default:
             return state
