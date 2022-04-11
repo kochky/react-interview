@@ -1,4 +1,4 @@
-import { LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE,RENDER,DELETE_MOVIE } from "./actionsType"
+import { LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE,DELETE_MOVIE, FILTER_MOVIE } from "./actionsType"
 
 export const loadMovies= ()=> {
     return {
@@ -35,15 +35,17 @@ export const addDislike=(id) => {
     }
 }
 
-export const noRender=()=>{
-    return {
-        type:RENDER
-    }
-}
-
 export const deleteMovie=(id)=>{
     return {
         type:DELETE_MOVIE,
         id:id,
     }
 }
+
+export const filterMovie=(filter)=>{
+    return {
+        type:FILTER_MOVIE,
+        payload:filter,
+    }
+}
+

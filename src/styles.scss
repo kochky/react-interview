@@ -18,7 +18,6 @@ li {
 .header {
     height:150px;
     display:flex;
- 
     &__container {
         width:80%;
         margin:auto;
@@ -85,7 +84,6 @@ li {
         margin-right:10%;
         width:200px;
         height:200px;
-   
         & p {
             margin-bottom:20px;
             font-weight: bold;
@@ -108,13 +106,8 @@ li {
         flex-wrap: wrap;
         column-gap: 20px;
         row-gap: 40px;
-        justify-content: start;
+        justify-content: space-around;
         align-items: center;
-        @media screen and (max-width:1780px) {
-            justify-content: space-around;
-
-        }
- 
     }
     &__error-container {
         color:red;
@@ -136,10 +129,6 @@ li {
 .card-wrapper{
     min-width:345px;
     height:355px;
-    flex: 1 0 345px;
-    @media screen and (max-width:1780px) {
-        flex: 0 
-    }
     @media screen and (max-width:1350px) {
         min-width:250px
     }
@@ -147,6 +136,7 @@ li {
         min-width:inherit 
     }
 }
+
 
 .card {
     &__first-content {
@@ -160,44 +150,21 @@ li {
         padding:0 30px !important;
         height:80px;
         &__gauge {
-            //width:150px;
             @media screen and (max-width:1350px) {
                 width:100px !important
             }
         }
-
     }
     &__buttons-container{
         display:flex;
         justify-content: space-around;
         height:50px;
     }
-  
+    &__invisible{
+        height:0 !important
+    } 
 }
 
-
-
-.alert-enter {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-.alert-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
-}
-.alert-exit {
-    opacity: 1;
-
-}
-.alert-exit-active {
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 200ms,transform 2000ms;
-    min-width:0;
-    animation:200ms widthChange 
-}
-  
 .modal {
     display:flex;
     flex-direction:column;
@@ -215,12 +182,30 @@ li {
     }
 }
 
-@keyframes widthChange {
-    from {
-        width:345px
-    }
-    to {
-        width:0%
-    }
-
+.alert-enter {
+    opacity: 0;
+    transform: scale(0.9);
 }
+
+.alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit {
+    opacity: 1;
+}
+
+.alert-exit-active {
+    animation:300ms delete
+}
+
+@keyframes delete {
+    0% { transform:scale(1) translate(0)}
+    50% {transform:scale(0.8) translate(0);opacity:1}
+    100% {transform:scale(0.8) translate(0,-300px);opacity:0}
+}
+
+
+

@@ -1,4 +1,4 @@
-import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE, RENDER, DELETE_MOVIE} from "../../constants/actionsType"
+import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE, DELETE_MOVIE, FILTER_MOVIE} from "../../constants/actionsType"
 
 
 function initialState () {
@@ -7,7 +7,8 @@ function initialState () {
         error:false,
         isLoaded:false,
         data:[],
-        render:false
+        filterOn:false,
+        filteredData:[]
     } 
 }
 function moviesData(state= initialState(),action){
@@ -26,13 +27,8 @@ function moviesData(state= initialState(),action){
                 error:false,
                 data:action.payload,
                 isLoaded:true,
-                render:true,
             }
-        case RENDER:
-            return {
-                ...state,
-                render:false,
-            }
+    
         case LOAD_MOVIES_ERROR:
             return {
                 ...state,
@@ -53,7 +49,7 @@ function moviesData(state= initialState(),action){
                 likedMovieIndex.disliked=false
                 likedMovieIndex.dislikes --
             }
-            return Object.assign({},state,likedMovieIndex)
+            return Object.assign({},state)
             
         case ADD_DISLIKE:
             let dislikedMovieIndex= state.data.find(movie=>movie.id===action.id)
@@ -68,14 +64,32 @@ function moviesData(state= initialState(),action){
                 dislikedMovieIndex.liked=false
                 dislikedMovieIndex.likes --
             }
-            return Object.assign({},state,dislikedMovieIndex)
+            return Object.assign({},state)
        
         case DELETE_MOVIE: 
             return {
                 ...state,
-                //render:true,
-                data:state.data.filter((movie)=>movie.id !== action.id)
+                data:state.data.filter((movie)=>movie.id !== action.id),
+                filteredData:state.filteredData.filter((movie)=>movie.id !== action.id)
             }
+       
+        case FILTER_MOVIE:
+            if(action.payload.length>0){
+                let newDataArray=[]
+                state.data.map(movie=>action.payload.toString().includes(movie.category)&& newDataArray.push(movie))
+                return {
+                    ...state,
+                    filterOn:true,
+                    filteredData:newDataArray
+                }
+            }else {
+                return {
+                    ...state,
+                    filterOn:false,
+                    filteredData:[]
+                }
+            }
+         
         default:
             return state
     }

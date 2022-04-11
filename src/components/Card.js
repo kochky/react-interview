@@ -34,11 +34,8 @@ const style = {
 
 function ImgMediaCard (props) {
   const nodeRef = React.useRef(null)
-
   //Spécification pour épargner le render des autres cards si les likes changent (dans le cas si juste state choisi)
   const movie= useSelector(state=>state.data.find(el=>el.id===props.id))
-  const likes= useSelector(state=>movie !==undefined && movie.likes)
-  const dislikes= useSelector(state=>movie !==undefined && movie.dislikes)
 
   const dispatch = useDispatch()
   const [deletedCard,setDeletedCard]=useState(false)
@@ -46,7 +43,6 @@ function ImgMediaCard (props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
   //Calcule un pourcentage à afficher dans la jauge selon le nombre de like par rapport au nombre total des notes. Si il y a 0 note, le pourcentage sera de 50%
   const gaugePercent=()=>{
     if (movie.likes+movie.dislikes ===0){
@@ -58,7 +54,7 @@ function ImgMediaCard (props) {
   function handleClickRemove(){
     handleClose()
     setDeletedCard(true)
-    setTimeout(() => {dispatch(deleteMovie(props.id))},200)
+    setTimeout(() => {dispatch(deleteMovie(props.id))},400)
   }
 
   return (
@@ -67,7 +63,7 @@ function ImgMediaCard (props) {
     <CSSTransition
       nodeRef={nodeRef}
       in={!deletedCard}
-      timeout={200}
+      timeout={400}
       classNames="alert"
       unmountOnExit
     >
