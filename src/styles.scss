@@ -2,9 +2,12 @@ body {
     margin:auto;
     font-family: "Roboto", Verdana, Geneva, Tahoma, sans-serif;   
     min-width:320px;
-    max-width:2048px;
 }
 
+.body-padding {
+    max-width:2048px;
+    margin:auto;
+}
 * {
     margin:0;
     padding:0;
@@ -244,6 +247,17 @@ li {
     100% {transform:scale(0.8) translate(0,-300px);opacity:0}
 }
 
-
+footer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height:150px;
+    background-color: #00A0B0;
+    padding:0 30px;
+    & p {
+        margin:10px 0;
+    }
+}
 
 
