@@ -1,4 +1,4 @@
-import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE, DELETE_MOVIE, FILTER_MOVIE} from "../../constants/actionsType"
+import {LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE, DELETE_MOVIE, FILTER_MOVIE, SET_EL_PER_PAGE, SET_CURRENT_PAGE} from "../../constants/actionsType"
 
 
 function initialState () {
@@ -8,7 +8,10 @@ function initialState () {
         isLoaded:false,
         data:[],
         filterOn:false,
-        filteredData:[]
+        filteredData:[],
+        elementsPerPage:4,
+        currentPage:1,
+        numberOfPages:1,
     } 
 }
 function moviesData(state= initialState(),action){
@@ -27,6 +30,7 @@ function moviesData(state= initialState(),action){
                 error:false,
                 data:action.payload,
                 isLoaded:true,
+                numberOfPages:Math.ceil(action.payload.length/state.elementsPerPage)
             }
     
         case LOAD_MOVIES_ERROR:
@@ -66,30 +70,65 @@ function moviesData(state= initialState(),action){
             }
             return Object.assign({},state)
        
-        case DELETE_MOVIE: 
+        case DELETE_MOVIE:
+            let totalPages=1
+            {state.filterOn ? totalPages=Math.ceil(state.filteredData.length/state.elementsPerPage): totalPages=Math.ceil(state.data.length/state.elementsPerPage)} 
             return {
                 ...state,
                 data:state.data.filter((movie)=>movie.id !== action.id),
-                filteredData:state.filteredData.filter((movie)=>movie.id !== action.id)
+                filteredData:state.filteredData.filter((movie)=>movie.id !== action.id),
+                numberOfPages:totalPages
+
             }
        
         case FILTER_MOVIE:
+            let verifyCurrentPage=state.currentPage
             if(action.payload.length>0){
                 let newDataArray=[]
                 state.data.map(movie=>action.payload.toString().includes(movie.category)&& newDataArray.push(movie))
+                {state.currentPage>Math.ceil(newDataArray.length/state.elementsPerPage) ? verifyCurrentPage=1: verifyCurrentPage=state.currentPage}
                 return {
                     ...state,
                     filterOn:true,
-                    filteredData:newDataArray
+                    filteredData:newDataArray,
+                    numberOfPages:Math.ceil(newDataArray.length/state.elementsPerPage),
+                    currentPage:verifyCurrentPage
                 }
             }else {
+                {state.currentPage>Math.ceil(state.data.length/state.elementsPerPage) ? verifyCurrentPage=1: verifyCurrentPage=state.currentPage}
                 return {
                     ...state,
                     filterOn:false,
-                    filteredData:[]
+                    filteredData:[],
+                    numberOfPages:Math.ceil(state.data.length/state.elementsPerPage),
+                    currentPage:verifyCurrentPage
+
                 }
             }
-         
+        case SET_EL_PER_PAGE:
+            if(state.filterOn){
+                const totalPages=Math.ceil(state.filteredData.length/action.payload)
+            return{
+                ...state,
+                elementsPerPage:action.payload,
+                numberOfPages: totalPages,
+                currentPage:1
+            }
+            }else {
+                const totalPages=Math.ceil(state.data.length/action.payload)
+                return{
+                    ...state,
+                    elementsPerPage:action.payload,
+                    numberOfPages: totalPages,
+                    currentPage:1
+                }            
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage:action.payload
+            }
+            
         default:
             return state
     }

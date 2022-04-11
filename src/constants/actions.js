@@ -1,4 +1,4 @@
-import { LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE,DELETE_MOVIE, FILTER_MOVIE } from "./actionsType"
+import { LOAD_MOVIES, LOAD_MOVIES_SUCCES, LOAD_MOVIES_ERROR, ADD_LIKE, ADD_DISLIKE,DELETE_MOVIE, FILTER_MOVIE,SET_EL_PER_PAGE, SET_CURRENT_PAGE } from "./actionsType"
 
 export const loadMovies= ()=> {
     return {
@@ -49,3 +49,16 @@ export const filterMovie=(filter)=>{
     }
 }
 
+export const numberOfElementsPerPage=(number)=>{
+    return {
+        type:SET_EL_PER_PAGE,
+        payload:number
+    }
+}
+
+export const setCurrentPage=(number)=>{
+    return {
+        type:SET_CURRENT_PAGE,
+        payload:number
+    }
+}

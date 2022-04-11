@@ -57,33 +57,28 @@ function Filter(){
     
     
     return(
-        <div className="container__filter">
-            <div>
-                <div>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                        <InputLabel color="flop" id="demo-multiple-checkbox-label">Filtres</InputLabel>
-                        <Select
-                        labelId="demo-multiple-checkbox-label"
-                        id="demo-multiple-checkbox"
-                        multiple
-                        value={filterActivated}
-                        onChange={handleChange}
-                        input={<OutlinedInput label="Filtres" />}
-                        renderValue={(selected) => selected.join(', ')}
-                        MenuProps={MenuProps}
-                        color="top"
-                        >
-                        {filters.map((name) => (
-                            <MenuItem key={name} value={name}>
-                            <Checkbox color="top" checked={filterActivated.indexOf(name) > -1} />
-                            <ListItemText primary={name} />
-                            </MenuItem>
-                        ))}
-                        </Select>
-                    </FormControl>
-
-                </div>
-            </div>
+        <div className="container__inputs__filter">         
+            <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel color="flop" id="demo-multiple-checkbox-label">Filtres</InputLabel>
+                <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                multiple
+                value={filterActivated}
+                onChange={handleChange}
+                input={<OutlinedInput label="Filtres" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+                color="top"
+                >
+                {filters.map((name) => (
+                    <MenuItem key={name} value={name}>
+                    <Checkbox color="top" checked={filterActivated.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                    </MenuItem>
+                ))}
+                </Select>
+            </FormControl>
         </div>
         )
 }

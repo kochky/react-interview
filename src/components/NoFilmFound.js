@@ -7,11 +7,11 @@ function NoFilmFound(){
     const props= useSelector(state=>state)
 
     return(
-        <>
-        <SentimentDissatisfiedIcon fontSize="large"/>
-        <div className="container__no-film">  Aucun film trouvé ! </div>
-        {props.filterOn && <div>Effacement des filtres...</div>}
-        </>
+        <div className="container__no-film">
+            <SentimentDissatisfiedIcon fontSize="large"/>
+            <div>  Aucun film trouvé ! </div>
+            {props.filterOn && <div>Effacement des filtres...</div>}
+        </div>
 
     )
 }
